@@ -2,6 +2,7 @@ name: main-worklfow
 
 env:
   ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+  IMAGE_REPOSITORY: dhruvin30/githubactions
   
 on:
   push:
@@ -24,4 +25,11 @@ jobs:
         run: go version 
       - name: Run unit tests
         run: go test -v ./...
+    # Build and release.
+  build-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source code
+        uses: actions/checkout@v2
+
 
